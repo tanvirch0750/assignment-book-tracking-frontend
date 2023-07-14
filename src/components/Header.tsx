@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LinkButton from './ui/LinkButton';
 
 function Header() {
   return (
@@ -7,9 +8,16 @@ function Header() {
         Book Tracker
       </Link>
 
-      <div>
-        <button>sign in</button>
-        <button>sign up</button>
+      <div className="flex items-center gap-4 text-stone-700">
+        <LinkButton type="yellow" to="/all-books">
+          All Books
+        </LinkButton>
+        <LinkButton type="yellow" to="/signin">
+          Signin
+        </LinkButton>
+        <LinkButton type="yellow" to="/signup">
+          Signup
+        </LinkButton>
       </div>
     </header>
   );
