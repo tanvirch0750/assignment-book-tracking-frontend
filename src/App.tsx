@@ -1,5 +1,7 @@
 function App() {
-  return <div>Book catalog app</div>;
+  return (
+    <div className="bg-yellow-700 text-justify text-lg">Book catalog app</div>
+  );
 }
 
 export default App;
