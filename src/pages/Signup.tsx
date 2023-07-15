@@ -5,7 +5,7 @@ function Signup() {
     <div className="flex h-full w-full items-center justify-center px-4 py-6">
       <div className="w-full">
         <h2 className="mb-8 text-2xl font-semibold">
-          Ready to read? Let's signup first!
+          Ready to track your reading? Let's signup first!
         </h2>
 
         <form>
