@@ -10,10 +10,10 @@ interface IUser {
 }
 
 const initialState: IUser = {
-  accessToken: '',
-  userName: '',
-  email: '',
-  userId: '',
+  accessToken: undefined,
+  userName: undefined,
+  email: undefined,
+  userId: undefined,
 };
 
 const authSlice = createSlice({
