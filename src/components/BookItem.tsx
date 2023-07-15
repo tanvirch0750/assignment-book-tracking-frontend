@@ -12,7 +12,7 @@ function BookItem({ wishlist }: IBookIemProps) {
         alt="book"
         className="h-36 object-cover"
       />
-      <div className="flex h-36 flex-col gap-0.5">
+      <div className="flex h-36 grow flex-col gap-0.5">
         <p className="text-lg font-medium">Book Name</p>
         <p className="text-sm capitalize italic text-stone-500">
           Author: Tanvir Chowodhury
@@ -24,7 +24,7 @@ function BookItem({ wishlist }: IBookIemProps) {
           </span>
         </p>
         <p>Publication Year: 2020</p>
-        <span className="mt-auto space-x-2">
+        <span className="mt-auto flex items-center justify-between space-x-2">
           <LinkButton to="/book/id">Details</LinkButton>
           {wishlist && <LinkButton to="">Remove from wishlist</LinkButton>}
         </span>
