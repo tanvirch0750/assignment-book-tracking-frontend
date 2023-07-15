@@ -15,31 +15,31 @@ export const authApi = api.injectEndpoints({
       }),
     }),
     // login endpoint
-    login: builder.mutation({
+    signin: builder.mutation({
       query: (data: IAuthLogin) => ({
         url: '/user/login',
         method: 'POST',
         body: data,
       }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const result = await queryFulfilled;
 
           localStorage.setItem(
             'auth',
             JSON.stringify({
-              accessToken: result.data.accessToken,
-              userName: result.data.userName,
-              email: result.data.email,
-              userId: result.data.userId,
+              accessToken: result.data.data.accessToken,
+              userName: result.data.data.userName,
+              email: result.data.data.email,
+              userId: result.data.data.userId,
             })
           );
           dispatch(
             userLoggedIn({
-              accessToken: result.data.accessToken,
-              userName: result.data.userName,
-              email: result.data.email,
-              userId: result.data.userId,
+              accessToken: result.data.data.accessToken,
+              userName: result.data.data.userName,
+              email: result.data.data.email,
+              userId: result.data.data.userId,
             })
           );
         } catch (error) {
@@ -50,5 +50,4 @@ export const authApi = api.injectEndpoints({
   }),
 });
 
-// eslint-disable-next-line no-empty-pattern
-export const { useSignupMutation, useLoginMutation } = authApi;
+export const { useSignupMutation, useSigninMutation } = authApi;
