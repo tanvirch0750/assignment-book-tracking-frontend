@@ -12,6 +12,12 @@ function Header() {
         <LinkButton type="yellow" to="/all-books">
           All Books
         </LinkButton>
+        <LinkButton type="yellow" to="/add-book">
+          Add Book
+        </LinkButton>
+        <LinkButton type="yellow" to="/wishlist">
+          Wishlist
+        </LinkButton>
         <LinkButton type="yellow" to="/signin">
           Signin
         </LinkButton>

@@ -2,7 +2,7 @@ import BookLIst from '../components/BookLIst';
 
 function Home() {
   return (
-    <main className="px-2 py-4">
+    <div className="px-2 py-4">
       <div className="rounded-md bg-yellow-50 p-8">
         <blockquote className="text-2xl font-bold text-stone-600">
           "Reality doesn’t always give us the life that we desire, but we can
@@ -13,7 +13,7 @@ function Home() {
         </span>
       </div>
       <BookLIst />
-    </main>
+    </div>
   );
 }
 

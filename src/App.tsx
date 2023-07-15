@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/AppLayout';
+import AddBook from './pages/AddBook';
 import AllBooks from './pages/AllBooks';
 import Book from './pages/Book';
 import Home from './pages/Home';
@@ -17,6 +18,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="all-books" element={<AllBooks />} />
           <Route path="book/:id" element={<Book />} />
+          <Route path="add-book" element={<AddBook />} />
           <Route path="tracker" element={<Tracker />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="signin" element={<Signin />} />

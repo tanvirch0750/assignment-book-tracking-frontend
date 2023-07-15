@@ -1,6 +1,10 @@
 import LinkButton from './ui/LinkButton';
 
-function BookItem() {
+type IBookIemProps = {
+  wishlist?: boolean;
+};
+
+function BookItem({ wishlist }: IBookIemProps) {
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
       <img
@@ -20,8 +24,9 @@ function BookItem() {
           </span>
         </p>
         <p>Publication Year: 2020</p>
-        <span className="mt-auto">
+        <span className="mt-auto space-x-2">
           <LinkButton to="/book/id">Details</LinkButton>
+          {wishlist && <LinkButton to="">Remove from wishlist</LinkButton>}
         </span>
       </div>
     </li>
