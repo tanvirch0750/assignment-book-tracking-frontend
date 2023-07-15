@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { IAuthLogin, IAuthSignup } from '../../../types/authType';
 import { api } from '../../api/apiSlice';
+import { userLoggedIn } from './authSlice';
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -28,17 +29,21 @@ export const authApi = api.injectEndpoints({
             'auth',
             JSON.stringify({
               accessToken: result.data.accessToken,
-              user: result.data.user,
+              userName: result.data.userName,
+              email: result.data.email,
+              userId: result.data.userId,
             })
           );
-          // dispatch(
-          //   userLoggedIn({
-          //     accessToken: result.data.accessToken,
-          //     user: result.data.user,
-          //   })
-          // );
+          dispatch(
+            userLoggedIn({
+              accessToken: result.data.accessToken,
+              userName: result.data.userName,
+              email: result.data.email,
+              userId: result.data.userId,
+            })
+          );
         } catch (error) {
-          // do nothing
+          console.log(error);
         }
       },
     }),
