@@ -3,7 +3,7 @@ import Button from '../components/ui/Button';
 function Signup() {
   return (
     <div className="flex h-full w-full items-center justify-center px-4 py-6">
-      <div className="w-full">
+      <div className="w-full rounded-md bg-yellow-50 p-6">
         <h2 className="mb-8 text-2xl font-semibold">
           Ready to track your reading? Let's signup first!
         </h2>
