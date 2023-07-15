@@ -4,6 +4,7 @@ import AddBook from './pages/AddBook';
 import AllBooks from './pages/AllBooks';
 import Book from './pages/Book';
 import Home from './pages/Home';
+import MyBooks from './pages/MyBooks';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Tracker from './pages/Tracker';
@@ -19,6 +20,7 @@ function App() {
           <Route path="all-books" element={<AllBooks />} />
           <Route path="book/:id" element={<Book />} />
           <Route path="add-book" element={<AddBook />} />
+          <Route path="my-books" element={<MyBooks />} />
           <Route path="tracker" element={<Tracker />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="signin" element={<Signin />} />
