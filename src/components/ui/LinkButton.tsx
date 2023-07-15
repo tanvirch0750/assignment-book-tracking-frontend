@@ -14,7 +14,7 @@ function LinkButton({ children, to, type }: ILinkButtonProps) {
     className =
       'text-md font-medium text-stone-800 hover:text-stone-900 hover:underline';
   } else {
-    className = 'text-sm text-blue-500 hover:text-blue-600 hover:underline';
+    className = 'text-md text-blue-500 hover:text-blue-600 hover:underline';
   }
 
   if (to === '-1')

@@ -1,3 +1,4 @@
+import BookLIst from '../components/BookLIst';
 import Filter from '../components/Filter';
 import SearchBook from '../components/SearchBook';
 
@@ -8,6 +9,7 @@ function AllBooks() {
         <SearchBook />
         <Filter />
       </div>
+      <BookLIst />
     </main>
   );
 }
