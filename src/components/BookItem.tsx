@@ -21,7 +21,7 @@ function BookItem() {
         </p>
         <p>Publication Year: 2020</p>
         <span className="mt-auto">
-          <LinkButton to="">Details</LinkButton>
+          <LinkButton to="/book/id">Details</LinkButton>
         </span>
       </div>
     </li>
