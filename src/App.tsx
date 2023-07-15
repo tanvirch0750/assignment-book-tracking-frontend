@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/AppLayout';
+import Loader from './components/ui/Loader';
+import useAuthCheck from './hooks/useAuthCheck';
 import AddBook from './pages/AddBook';
 import AllBooks from './pages/AllBooks';
 import Book from './pages/Book';
@@ -11,7 +13,10 @@ import Tracker from './pages/Tracker';
 import Wishlist from './pages/Wishlist';
 
 function App() {
-  return (
+  const authCheck = useAuthCheck();
+  return !authCheck ? (
+    <Loader />
+  ) : (
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
