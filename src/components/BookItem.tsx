@@ -18,7 +18,7 @@ function BookItem({ wishlist, book }: IBookIemProps) {
         </p>
         <p>
           Genre:{' '}
-          <span className="rounded-full bg-yellow-100 px-2 text-sm tracking-wide">
+          <span className="rounded-full bg-yellow-100 px-2 text-sm capitalize tracking-wide">
             {genre}
           </span>
         </p>

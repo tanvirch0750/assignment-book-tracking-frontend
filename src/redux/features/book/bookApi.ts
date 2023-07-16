@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { api } from '../../api/apiSlice';
 
 type IBookParam = {
@@ -27,16 +28,25 @@ const bookApi = api.injectEndpoints({
             queryString += `searchTerm=${options.searchTerm}&`;
           }
 
-          queryString = queryString.slice(0, -1); // Remove the trailing "&"
+          queryString = queryString.slice(0, -1);
         }
 
         return queryString;
       },
+      keepUnusedDataFor: 600,
     }),
     getBook: builder.query({
       query: (id: string) => `/book/${id}`,
     }),
+    addBook: builder.mutation({
+      query: (data) => ({
+        url: `/book`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useGetBookQuery } = bookApi;
+export const { useGetBooksQuery, useGetBookQuery, useAddBookMutation } =
+  bookApi;
