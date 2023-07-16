@@ -34,6 +34,7 @@ const bookApi = api.injectEndpoints({
         return queryString;
       },
       keepUnusedDataFor: 600,
+      providesTags: ['Books'],
     }),
     getBook: builder.query({
       query: (id: string) => `/book/${id}`,
@@ -44,6 +45,7 @@ const bookApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      invalidatesTags: ['Books'],
     }),
   }),
 });
