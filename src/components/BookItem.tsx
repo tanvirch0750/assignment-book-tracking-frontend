@@ -1,40 +1,39 @@
+import { IBook } from '../types/bookType';
 import LinkButton from './ui/LinkButton';
 
 type IBookIemProps = {
   wishlist?: boolean;
+  book: IBook;
 };
 
-function BookItem({ wishlist }: IBookIemProps) {
+function BookItem({ wishlist, book }: IBookIemProps) {
+  const { image, id, title, author, genre, publicationYear, addedBy } = book;
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
-      <img
-        src="https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
-        alt="book"
-        className="h-40 object-cover"
-      />
+      <img src={image} alt={title} className="h-40 w-[103px]" />
       <div className="flex h-40 grow flex-col gap-0.5">
-        <p className="text-lg font-medium">Book Name</p>
+        <p className="text-lg font-medium">{title}</p>
         <p className="text-sm capitalize italic text-stone-500">
-          Author: Tanvir Chowodhury
+          Author: {author}
         </p>
         <p>
           Genre:{' '}
           <span className="rounded-full bg-yellow-100 px-2 text-sm tracking-wide">
-            Ficton
+            {genre}
           </span>
         </p>
 
-        <p>Publication Year: 2020</p>
+        <p>Publication Year: {publicationYear}</p>
 
         <p>
           Added by:{' '}
           <span className="rounded-full bg-green-100 px-2 text-xs tracking-wide">
-            Tanvir
+            {addedBy?.userName}
           </span>
         </p>
 
         <span className="mt-auto flex items-center justify-between space-x-2">
-          <LinkButton to="/book/id">Details</LinkButton>
+          <LinkButton to={`/book/${id!}`}>Details</LinkButton>
           {wishlist && <LinkButton to="">Remove from wishlist</LinkButton>}
         </span>
       </div>

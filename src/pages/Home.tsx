@@ -1,6 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import BookLIst from '../components/BookLIst';
+import Error from '../components/ui/Error';
+import Loader from '../components/ui/Loader';
+import { useGetBooksQuery } from '../redux/features/book/bookApi';
+import { IBook } from '../types/bookType';
 
 function Home() {
+  const {
+    data: books,
+    isLoading,
+    isError,
+  } = useGetBooksQuery({ page: 1, limit: 10 });
+
+  let content = null;
+
+  if (isLoading) content = <Loader />;
+  if (!isLoading && isError) content = <Error message="There was an error" />;
+  if (!isLoading && !isError && (books?.data as IBook[]).length === 0) {
+    <Error message="No books found" />;
+  }
+  if (!isLoading && !isError && (books?.data as IBook[]).length > 0) {
+    content = <BookLIst books={books?.data} />;
+  }
+
   return (
     <div className="px-2 py-4">
       <div className="rounded-md bg-yellow-50 p-8">
@@ -12,7 +35,7 @@ function Home() {
           -- Adelise M. Cullens
         </span>
       </div>
-      <BookLIst />
+      {content}
     </div>
   );
 }
