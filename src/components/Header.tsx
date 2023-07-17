@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../redux/api/apiSlice';
 import { userLoggedOut } from '../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -7,11 +7,13 @@ import LinkButton from './ui/LinkButton';
 function Header() {
   const auth = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const logout = () => {
     dispatch(userLoggedOut());
     localStorage.clear();
     dispatch(api.util.resetApiState());
+    navigate('/signin');
   };
 
   return (

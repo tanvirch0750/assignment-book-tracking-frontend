@@ -1,26 +1,39 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { useGetReviewsQuery } from '../redux/features/comment/commentApi';
+import { IReview } from '../types/reviewType';
 import Review from './Review';
-import Button from './ui/Button';
+import ReviewAdd from './ReviewAdd';
+import Loader from './ui/Loader';
 
-function ReviewList() {
+function ReviewList({ bookId }: { bookId: string }) {
+  const { data: reviews, isLoading, isError } = useGetReviewsQuery(bookId);
+
+  let content = null;
+
+  if (isLoading) content = <Loader />;
+  if (!isLoading && isError)
+    content = (
+      <p className="mt-4 rounded-md bg-green-100 p-2 text-lg text-green-700">
+        No review found, please give this book a review if you read it
+      </p>
+    );
+  if (!isLoading && !isError && (reviews?.data as IReview[]).length === 0) {
+    <p className="mt-4 rounded-md bg-green-100 p-2 text-lg text-green-700">
+      No review found, please give this book a review if you read it
+    </p>;
+  }
+  if (!isLoading && !isError && (reviews?.data as IReview[]).length > 0) {
+    content = (reviews?.data as IReview[]).map((review: IReview) => (
+      <Review review={review} key={review.id} />
+    ));
+  }
+
   return (
     <div className="">
       <h2 className="text-md font-medium text-stone-950">Books Reviews:</h2>
-      <form className="flex gap-2 py-2">
-        <input
-          type="text"
-          placeholder="Add Review"
-          className="w-full basis-3/4 rounded-full bg-yellow-100 px-4 py-3 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-opacity-50"
-        />
-        <Button type="primary">Add Review</Button>
-      </form>
-      <ul className="divide-y divide-stone-200 py-2">
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-      </ul>
+      <ReviewAdd bookId={bookId} />
+      <ul className="divide-y divide-stone-200 py-2">{content}</ul>
     </div>
   );
 }

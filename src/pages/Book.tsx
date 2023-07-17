@@ -121,7 +121,7 @@ function Book() {
             </p>
           </div>
 
-          <ReviewList />
+          <ReviewList bookId={book?.data?.id} />
         </div>
       </div>
     );
