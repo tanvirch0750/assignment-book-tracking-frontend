@@ -1,21 +1,41 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Review from '../components/Review';
 import Error from '../components/ui/Error';
 import LinkButton from '../components/ui/LinkButton';
 import Loader from '../components/ui/Loader';
-import { useGetBookQuery } from '../redux/features/book/bookApi';
+import {
+  useDeleteBookMutation,
+  useGetBookQuery,
+} from '../redux/features/book/bookApi';
 import { useAppSelector } from '../redux/hooks';
 import { IBook } from '../types/bookType';
 
 function Book() {
   const { bookId } = useParams();
   const userId = useAppSelector((state) => state.auth.userId);
+  const navigate = useNavigate();
 
   const { data: book, isLoading, isError } = useGetBookQuery(bookId!);
+  const [
+    deleteBook,
+    { isSuccess, isLoading: deleteLoading, isError: deleteError },
+  ] = useDeleteBookMutation();
+
+  function handeleDeleteFunction() {
+    if (bookId) deleteBook(bookId);
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/all-books');
+    }
+  }, [isSuccess, navigate]);
 
   const date = new Date(book?.data?.publicationYear);
   const formattedDate = date.toLocaleDateString('en-US', {
@@ -45,15 +65,20 @@ function Book() {
                 >
                   Edit
                 </Link>
-                <span
+                <button
                   className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50"
-                  role="button"
+                  onClick={handeleDeleteFunction}
+                  disabled={deleteLoading}
                 >
-                  Delete
-                </span>
+                  {deleteLoading ? 'Deleteing book...' : 'Delete'}
+                </button>
               </div>
             )}
           </div>
+
+          {deleteError && (
+            <Error message="There was an error deleting the book" />
+          )}
 
           <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
             <img
