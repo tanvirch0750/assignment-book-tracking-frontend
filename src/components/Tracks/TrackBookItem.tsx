@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { ITrackItem } from '../../types/trackType';
 import LinkButton from '../ui/LinkButton';
 import TrackBookitemButtons from './TrackBookitemButtons';

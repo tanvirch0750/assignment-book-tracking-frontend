@@ -1,11 +1,17 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useEditBookMutation } from '../../redux/features/book/bookApi';
 import { IBook } from '../../types/bookType';
 import Button from './Button';
 
 function EditForm({ book }: { book: IBook }) {
   const [editBook, { isLoading, isError, isSuccess }] = useEditBookMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book edited successfully');
+    if (isError) toast.error('There was an error editing book');
+  }, [isSuccess, isError]);
 
   const {
     id,

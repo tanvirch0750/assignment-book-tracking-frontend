@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useDeleteWishlistMutation } from '../../redux/features/wishlist/wishlistApi';
 import { IWishlistItem } from '../../types/wishitemType';
 import LinkButton from '../ui/LinkButton';
@@ -10,6 +11,12 @@ function WishlistBookItem({ item }: { item: IWishlistItem }) {
 
   const [deleteWishlist, { isSuccess, isLoading, isError }] =
     useDeleteWishlistMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book deleted from your wish list');
+    if (isError)
+      toast.error('There was an error delete this book to your wishlist');
+  }, [isSuccess, isError]);
 
   function handeleDeleteFunction() {
     if (item.id) deleteWishlist(item.id);

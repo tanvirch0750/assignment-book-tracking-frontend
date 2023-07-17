@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import {
   useAddWishlistMutation,
   useGetWishlistQuery,
@@ -17,6 +19,12 @@ function WishlistButton({ id }: { id: string }) {
 
   const [addWishlist, { isLoading, isError, isSuccess }] =
     useAddWishlistMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book added to your wish list');
+    if (isError)
+      toast.error('There was an error add this book to your wishlist');
+  }, [isSuccess, isError]);
 
   function handleSubmit() {
     addWishlist({ book: id });

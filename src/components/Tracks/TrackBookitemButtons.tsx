@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import {
   useDeleteTracklistMutation,
   useEditTracklistMutation,
@@ -17,6 +20,18 @@ function TrackBookitemButtons({ id }: { id: string }) {
 
   const [editTracklist, { isLoading, isError, isSuccess }] =
     useEditTracklistMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book status updated successfully');
+
+    if (isError) toast.error('There was an error on update status');
+  }, [isSuccess, isError]);
+
+  useEffect(() => {
+    if (deleteSuccess)
+      toast.success('Book deleted from your tracklist successfully');
+    if (deleteError) toast.error('Book deleted from your tracklist failed');
+  }, [deleteSuccess, deleteError]);
 
   function handeleDeleteFunction() {
     if (id) deleteTracklist(id);

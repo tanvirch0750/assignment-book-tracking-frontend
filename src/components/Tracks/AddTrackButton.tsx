@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import {
   useAddTracklistMutation,
   useGetTracklistQuery,
@@ -18,6 +20,11 @@ function AddTrackButton({ id }: { id: string }) {
 
   const [addTracklist, { isLoading, isError, isSuccess }] =
     useAddTracklistMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book added to your tracking list');
+    if (isError) toast.error('There was an error add this book to tracklist');
+  }, [isSuccess, isError]);
 
   function handleSubmit() {
     addTracklist({ book: id });

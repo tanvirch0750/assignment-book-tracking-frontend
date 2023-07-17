@@ -1,12 +1,18 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useAddReviewMutation } from '../../redux/features/comment/commentApi';
 import Button from '../ui/Button';
 import Error from '../ui/Error';
 
 function ReviewAdd({ bookId }: { bookId: string }) {
-  const [addReview, { isLoading, isError }] = useAddReviewMutation();
+  const [addReview, { isLoading, isError, isSuccess }] = useAddReviewMutation();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Review added successfully');
+    if (isError) toast.error('There was an error in adding review');
+  }, [isSuccess, isError]);
 
   const [review, setReview] = useState('');
 

@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReviewList from '../components/Reviews/ReviewList';
 import AddTrackButton from '../components/Tracks/AddTrackButton';
@@ -29,14 +30,21 @@ function Book() {
   ] = useDeleteBookMutation();
 
   function handeleDeleteFunction() {
-    if (bookId) deleteBook(bookId);
+    if (confirm('Are you sure you want to delete this book?')) {
+      deleteBook(bookId);
+    }
   }
 
   useEffect(() => {
     if (isSuccess) {
+      toast.success('Book deleted successfully');
       navigate('/all-books');
     }
-  }, [isSuccess, navigate]);
+
+    if (deleteError) {
+      toast.error('Failed to delete book');
+    }
+  }, [isSuccess, navigate, deleteError]);
 
   const date = new Date(book?.data?.publicationYear);
   const formattedDate = date.toLocaleDateString('en-US', {

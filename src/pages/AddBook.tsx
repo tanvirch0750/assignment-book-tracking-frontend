@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import Button from '../components/ui/Button';
 import { useAddBookMutation } from '../redux/features/book/bookApi';
 
@@ -15,6 +16,11 @@ function AddBook() {
   const [descripttion, setDescription] = useState('');
 
   const formattedGenre = genre.toLowerCase();
+
+  useEffect(() => {
+    if (isSuccess) toast.success('Book added successfully');
+    if (isError) toast.success('There was an error, book add failed');
+  }, [isSuccess, isError]);
 
   function resetForm() {
     setTitle('');
