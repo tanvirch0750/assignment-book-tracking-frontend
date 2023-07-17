@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { useParams } from 'react-router-dom';
-import EditForm from '../components/EditForm';
+import EditForm from '../components/ui/EditForm';
 import Error from '../components/ui/Error';
 import Loader from '../components/ui/Loader';
 import { useGetBookQuery } from '../redux/features/book/bookApi';

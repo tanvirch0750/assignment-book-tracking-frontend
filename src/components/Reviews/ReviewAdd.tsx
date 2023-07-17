@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { FormEvent, useState } from 'react';
-import { useAddReviewMutation } from '../redux/features/comment/commentApi';
-import Button from './ui/Button';
-import Error from './ui/Error';
+import { useAddReviewMutation } from '../../redux/features/comment/commentApi';
+import Button from '../ui/Button';
+import Error from '../ui/Error';
 
 function ReviewAdd({ bookId }: { bookId: string }) {
   const [addReview, { isLoading, isError }] = useAddReviewMutation();

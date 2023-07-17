@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { api } from '../redux/api/apiSlice';
-import { userLoggedOut } from '../redux/features/auth/authSlice';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import LinkButton from './ui/LinkButton';
+import { api } from '../../redux/api/apiSlice';
+import { userLoggedOut } from '../../redux/features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import LinkButton from './LinkButton';
 
 function Header() {
   const auth = useAppSelector((state) => state.auth);

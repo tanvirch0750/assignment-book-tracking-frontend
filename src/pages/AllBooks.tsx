@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import BookLIst from '../components/BookLIst';
-import Filter from '../components/Filter';
-import SearchBook from '../components/SearchBook';
+import BookLIst from '../components/Books/BookLIst';
+import Filter from '../components/Filters/Filter';
+import SearchBook from '../components/Filters/SearchBook';
 import Error from '../components/ui/Error';
 import Loader from '../components/ui/Loader';
 import { useGetBooksQuery } from '../redux/features/book/bookApi';

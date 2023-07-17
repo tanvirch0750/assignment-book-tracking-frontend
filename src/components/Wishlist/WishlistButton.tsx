@@ -4,8 +4,8 @@
 import {
   useAddWishlistMutation,
   useGetWishlistQuery,
-} from '../redux/features/wishlist/wishlistApi';
-import { IWishlistItem } from '../types/wishitemType';
+} from '../../redux/features/wishlist/wishlistApi';
+import { IWishlistItem } from '../../types/wishitemType';
 
 function WishlistButton({ id }: { id: string }) {
   const { data: wishlist, isLoading: getWishLoading } =

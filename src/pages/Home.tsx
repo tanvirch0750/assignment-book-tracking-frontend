@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import BookLIst from '../components/BookLIst';
+import BookLIst from '../components/Books/BookLIst';
 import Error from '../components/ui/Error';
 import Loader from '../components/ui/Loader';
 import { useGetBooksQuery } from '../redux/features/book/bookApi';

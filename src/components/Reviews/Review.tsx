@@ -1,4 +1,4 @@
-import { IReview } from '../types/reviewType';
+import { IReview } from '../../types/reviewType';
 
 function Review({ review }: { review: IReview }) {
   return (

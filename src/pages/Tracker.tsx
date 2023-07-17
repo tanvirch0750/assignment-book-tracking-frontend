@@ -1,4 +1,4 @@
-import TrackBookList from '../components/TrackBookList';
+import TrackBookList from '../components/Tracks/TrackBookList';
 
 function Tracker() {
   return (

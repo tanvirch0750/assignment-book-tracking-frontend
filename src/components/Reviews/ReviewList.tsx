@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { useGetReviewsQuery } from '../redux/features/comment/commentApi';
-import { IReview } from '../types/reviewType';
+import { useGetReviewsQuery } from '../../redux/features/comment/commentApi';
+import { IReview } from '../../types/reviewType';
 import Review from './Review';
 import ReviewAdd from './ReviewAdd';
 

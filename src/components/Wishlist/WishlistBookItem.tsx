@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { useDeleteWishlistMutation } from '../redux/features/wishlist/wishlistApi';
-import { IWishlistItem } from '../types/wishitemType';
-import LinkButton from './ui/LinkButton';
+import { useDeleteWishlistMutation } from '../../redux/features/wishlist/wishlistApi';
+import { IWishlistItem } from '../../types/wishitemType';
+import LinkButton from '../ui/LinkButton';
 
 function WishlistBookItem({ item }: { item: IWishlistItem }) {
   const { image, id, title, author, genre, publicationYear } = item.book;

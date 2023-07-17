@@ -1,5 +1,6 @@
-import { ITrackItem } from '../types/trackType';
-import LinkButton from './ui/LinkButton';
+import { ITrackItem } from '../../types/trackType';
+import LinkButton from '../ui/LinkButton';
+import TrackBookitemButtons from './TrackBookitemButtons';
 
 function TrackBookItem({ item }: { item: ITrackItem }) {
   const { image, id, title, author, genre, publicationYear } = item.book;
@@ -41,9 +42,7 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
         <span className="mt-auto flex items-center justify-between space-x-2">
           <LinkButton to={`/book/${id}`}>Details</LinkButton>
           <div className="space-x-2">
-            <LinkButton to="">Reading</LinkButton>
-            <LinkButton to="">Soon</LinkButton>
-            <LinkButton to="">Finished</LinkButton>
+            <TrackBookitemButtons />
           </div>
         </span>
       </div>

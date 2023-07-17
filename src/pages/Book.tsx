@@ -5,10 +5,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import ReviewList from '../components/ReviewList';
-import WishlistButton from '../components/WishlistButton';
+import ReviewList from '../components/Reviews/ReviewList';
+import AddTrackButton from '../components/Tracks/AddTrackButton';
+import WishlistButton from '../components/Wishlist/WishlistButton';
 import Error from '../components/ui/Error';
-import LinkButton from '../components/ui/LinkButton';
 import Loader from '../components/ui/Loader';
 import {
   useDeleteBookMutation,
@@ -106,7 +106,7 @@ function Book() {
               </p>
               <span className="mt-auto space-x-3">
                 <WishlistButton id={book?.data?.id} />
-                <LinkButton to="">Add to track list</LinkButton>
+                <AddTrackButton id={book?.data?.id} />
               </span>
             </div>
           </div>

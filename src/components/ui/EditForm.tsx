@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { FormEvent, useState } from 'react';
-import { useEditBookMutation } from '../redux/features/book/bookApi';
-import { IBook } from '../types/bookType';
-import Button from './ui/Button';
+import { useEditBookMutation } from '../../redux/features/book/bookApi';
+import { IBook } from '../../types/bookType';
+import Button from './Button';
 
 function EditForm({ book }: { book: IBook }) {
   const [editBook, { isLoading, isError, isSuccess }] = useEditBookMutation();

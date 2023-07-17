@@ -1,5 +1,5 @@
-import { IBook } from '../types/bookType';
-import LinkButton from './ui/LinkButton';
+import { IBook } from '../../types/bookType';
+import LinkButton from '../ui/LinkButton';
 
 type IBookIemProps = {
   wishlist?: boolean;
