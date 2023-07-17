@@ -1,10 +1,19 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
+import { useDeleteWishlistMutation } from '../redux/features/wishlist/wishlistApi';
 import { IWishlistItem } from '../types/wishitemType';
 import LinkButton from './ui/LinkButton';
 
 function WishlistBookItem({ item }: { item: IWishlistItem }) {
   const { image, id, title, author, genre, publicationYear } = item.book;
+
+  const [deleteWishlist, { isSuccess, isLoading, isError }] =
+    useDeleteWishlistMutation();
+
+  function handeleDeleteFunction() {
+    if (item.id) deleteWishlist(item.id);
+  }
 
   const date = new Date(publicationYear);
   const formattedDate = date.toLocaleDateString('en-US', {
@@ -37,7 +46,13 @@ function WishlistBookItem({ item }: { item: IWishlistItem }) {
 
         <span className="mt-auto flex items-center justify-between space-x-2">
           <LinkButton to={`/book/${id}`}>Details</LinkButton>
-          <LinkButton to="">Remove from wishlist</LinkButton>
+          <button
+            className="text-md text-blue-500 hover:text-blue-600 hover:underline"
+            disabled={isLoading}
+            onClick={handeleDeleteFunction}
+          >
+            {isLoading ? 'Removing...' : 'Remove from wishlist'}
+          </button>
         </span>
       </div>
     </li>

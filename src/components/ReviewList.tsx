@@ -4,14 +4,18 @@ import { useGetReviewsQuery } from '../redux/features/comment/commentApi';
 import { IReview } from '../types/reviewType';
 import Review from './Review';
 import ReviewAdd from './ReviewAdd';
-import Loader from './ui/Loader';
 
 function ReviewList({ bookId }: { bookId: string }) {
   const { data: reviews, isLoading, isError } = useGetReviewsQuery(bookId);
 
   let content = null;
 
-  if (isLoading) content = <Loader />;
+  if (isLoading)
+    content = (
+      <p className="mt-4 rounded-md bg-green-100 p-2 text-lg text-green-700">
+        Please Wait a moment...
+      </p>
+    );
   if (!isLoading && isError)
     content = (
       <p className="mt-4 rounded-md bg-green-100 p-2 text-lg text-green-700">
