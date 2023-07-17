@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Review from '../components/Review';
+import ReviewList from '../components/ReviewList';
 import Error from '../components/ui/Error';
 import LinkButton from '../components/ui/LinkButton';
 import Loader from '../components/ui/Loader';
@@ -121,19 +121,7 @@ function Book() {
             </p>
           </div>
 
-          <div className="">
-            <h2 className="text-md font-medium text-stone-950">
-              Books Reviews:
-            </h2>
-            <ul className="divide-y divide-stone-200 py-2">
-              <Review />
-              <Review />
-              <Review />
-              <Review />
-              <Review />
-              <Review />
-            </ul>
-          </div>
+          <ReviewList />
         </div>
       </div>
     );
