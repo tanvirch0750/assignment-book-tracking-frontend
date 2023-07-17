@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { api } from '../../api/apiSlice';
 
@@ -38,6 +40,7 @@ const bookApi = api.injectEndpoints({
     }),
     getBook: builder.query({
       query: (id: string) => `/book/${id}`,
+      providesTags: (result, error, arg) => [{ type: 'Book', id: arg }],
     }),
     addBook: builder.mutation({
       query: (data) => ({
@@ -47,8 +50,23 @@ const bookApi = api.injectEndpoints({
       }),
       invalidatesTags: ['Books'],
     }),
+    editBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/book/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: (result, error, arg) => [
+        'Books',
+        { type: 'Book', id: arg.id },
+      ],
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useGetBookQuery, useAddBookMutation } =
-  bookApi;
+export const {
+  useGetBooksQuery,
+  useGetBookQuery,
+  useAddBookMutation,
+  useEditBookMutation,
+} = bookApi;

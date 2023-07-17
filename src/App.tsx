@@ -7,6 +7,7 @@ import useAuthCheck from './hooks/useAuthCheck';
 import AddBook from './pages/AddBook';
 import AllBooks from './pages/AllBooks';
 import Book from './pages/Book';
+import EditBook from './pages/EditBook';
 import Home from './pages/Home';
 import MyBooks from './pages/MyBooks';
 import Signin from './pages/Signin';
@@ -38,6 +39,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AddBook />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="edit-book/:bookId"
+            element={
+              <PrivateRoute>
+                <EditBook />
               </PrivateRoute>
             }
           />

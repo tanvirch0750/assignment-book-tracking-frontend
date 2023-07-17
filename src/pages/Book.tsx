@@ -1,17 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Review from '../components/Review';
 import Error from '../components/ui/Error';
 import LinkButton from '../components/ui/LinkButton';
 import Loader from '../components/ui/Loader';
 import { useGetBookQuery } from '../redux/features/book/bookApi';
+import { useAppSelector } from '../redux/hooks';
 import { IBook } from '../types/bookType';
 
 function Book() {
   const { bookId } = useParams();
+  const userId = useAppSelector((state) => state.auth.userId);
 
   const { data: book, isLoading, isError } = useGetBookQuery(bookId!);
+
+  const date = new Date(book?.data?.publicationYear);
+  const formattedDate = date.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 
   let content = null;
 
@@ -26,14 +37,22 @@ function Book() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-xl font-semibold">Book Details</h2>
 
-            <div className="space-x-2">
-              <span className="rounded-full bg-green-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
-                Edit
-              </span>
-              <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
-                Delete
-              </span>
-            </div>
+            {userId === book?.data?.addedBy?.id && (
+              <div className="space-x-2">
+                <Link
+                  className="rounded-full bg-green-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50"
+                  to={`/edit-book/${book?.data?.id}`}
+                >
+                  Edit
+                </Link>
+                <span
+                  className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50"
+                  role="button"
+                >
+                  Delete
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
@@ -53,7 +72,12 @@ function Book() {
                   {book?.data?.genre}
                 </span>
               </p>
-              <p>Publication Year: {book?.data?.publicationYear}</p>
+              <p>
+                Publication Year:{' '}
+                <span className="rounded-full bg-orange-200 px-2 text-sm tracking-wide">
+                  {formattedDate}
+                </span>
+              </p>
               <span className="mt-auto space-x-2">
                 <LinkButton to="">Add to wishlist</LinkButton>
                 <LinkButton to="">Add to track list</LinkButton>

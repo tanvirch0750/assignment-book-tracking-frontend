@@ -14,13 +14,6 @@ function AddBook() {
   const [image, setImage] = useState('');
   const [descripttion, setDescription] = useState('');
 
-  const date = new Date(publicationYear);
-  const formattedDate = date.toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-
   const formattedGenre = genre.toLowerCase();
 
   function resetForm() {
@@ -39,7 +32,7 @@ function AddBook() {
       title,
       author,
       genre: formattedGenre,
-      publicationYear: formattedDate,
+      publicationYear,
       image,
       descripttion,
     });
