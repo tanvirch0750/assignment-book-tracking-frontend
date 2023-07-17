@@ -30,7 +30,7 @@ function EditForm({ book }: { book: IBook }) {
     initialPublicationYear
   );
   const [image, setImage] = useState(initialImage);
-  const [descripttion, setDescription] = useState(initialDescription);
+  const [description, setDescription] = useState(initialDescription);
 
   const formattedGenre = genre.toLowerCase();
 
@@ -45,7 +45,7 @@ function EditForm({ book }: { book: IBook }) {
         genre: formattedGenre,
         publicationYear,
         image,
-        descripttion,
+        description,
       },
     });
   }
@@ -129,7 +129,7 @@ function EditForm({ book }: { book: IBook }) {
             name="description"
             className="input"
             required
-            value={descripttion}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>

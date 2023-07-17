@@ -123,11 +123,7 @@ function Book() {
             <h2 className="text-md font-medium text-stone-950">
               Books Summary:
             </h2>
-            <p className="text-stone-800">
-              {book?.data?.description
-                ? book?.data?.description
-                : 'Will added soon'}
-            </p>
+            <p className="text-stone-800">{book?.data?.description}</p>
           </div>
 
           <ReviewList bookId={book?.data?.id} />

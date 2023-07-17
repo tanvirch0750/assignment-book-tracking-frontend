@@ -13,7 +13,7 @@ function AddBook() {
   const [genre, setGenre] = useState('');
   const [publicationYear, setPublicationYear] = useState('');
   const [image, setImage] = useState('');
-  const [descripttion, setDescription] = useState('');
+  const [description, setDescription] = useState('');
 
   const formattedGenre = genre.toLowerCase();
 
@@ -40,7 +40,7 @@ function AddBook() {
       genre: formattedGenre,
       publicationYear,
       image,
-      descripttion,
+      description,
     });
     resetForm();
   }
@@ -129,7 +129,7 @@ function AddBook() {
                 name="description"
                 className="input"
                 required
-                value={descripttion}
+                value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>

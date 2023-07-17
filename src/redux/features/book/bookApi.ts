@@ -7,6 +7,8 @@ type IBookParam = {
   searchTerm?: string;
   page?: number;
   limit?: number;
+  genre?: string;
+  publicationYear?: string;
 };
 
 const bookApi = api.injectEndpoints({
@@ -15,7 +17,14 @@ const bookApi = api.injectEndpoints({
       query: (options: IBookParam) => {
         let queryString = '/book';
 
-        if (options.page || options.limit || options.searchTerm) {
+        if (
+          options.page ||
+          options.limit ||
+          options.searchTerm ||
+          options.genre ||
+          (options.publicationYear &&
+            (options.genre !== 'all' || options.publicationYear !== 'all'))
+        ) {
           queryString += '?';
 
           if (options.page) {
@@ -28,6 +37,14 @@ const bookApi = api.injectEndpoints({
 
           if (options.searchTerm) {
             queryString += `searchTerm=${options.searchTerm}&`;
+          }
+
+          if (options.genre && options.genre !== 'all') {
+            queryString += `genre=${options.genre}&`;
+          }
+
+          if (options.publicationYear && options.publicationYear !== 'all') {
+            queryString += `publicationYear=${options.publicationYear}&`;
           }
 
           queryString = queryString.slice(0, -1);
