@@ -14,7 +14,7 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
 
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
-      <img src={image} alt={title} className="h-36 object-cover" />
+      <img src={image} alt={title} className="h-36 w-[103px] object-cover" />
       <div className="flex h-36 grow flex-col gap-0.5">
         <p className="font-meBoodium flex items-center justify-between text-lg">
           <span>{title}</span>
@@ -42,7 +42,7 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
         <span className="mt-auto flex items-center justify-between space-x-2">
           <LinkButton to={`/book/${id}`}>Details</LinkButton>
           <div className="space-x-2">
-            <TrackBookitemButtons />
+            <TrackBookitemButtons id={item.id} />
           </div>
         </span>
       </div>
