@@ -12,6 +12,17 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
     year: 'numeric',
   });
 
+  let statusClass = null;
+
+  if (item?.status === 'reading')
+    statusClass = 'rounded-full bg-green-300 px-2 py-0.5 text-sm';
+  if (item?.status === 'soon')
+    statusClass = 'rounded-full bg-yellow-300 px-2 py-0.5 text-sm';
+  if (item?.status === 'finished')
+    statusClass = 'rounded-full bg-orange-300 px-2 py-0.5 text-sm';
+  if (item?.status === 'Not started')
+    statusClass = 'rounded-full bg-blue-300 px-2 py-0.5 text-sm';
+
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
       <img src={image} alt={title} className="h-36 w-[103px] object-cover" />
@@ -19,9 +30,7 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
         <p className="font-meBoodium flex items-center justify-between text-lg">
           <span>{title}</span>
           <span>
-            <span className="rounded-full bg-green-300 px-2 py-0.5 text-sm">
-              {item.status}
-            </span>
+            <span className={`${statusClass}`}>{item.status}</span>
           </span>
         </p>
         <p className="text-sm capitalize italic text-stone-500">
