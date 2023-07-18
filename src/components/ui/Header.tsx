@@ -34,7 +34,7 @@ function Header() {
             </LinkButton>
 
             <LinkButton type="yellow" to="/my-books">
-              My Books
+              {auth?.userName?.split(' ')[0]}'s Books
             </LinkButton>
             <span
               role="button"
