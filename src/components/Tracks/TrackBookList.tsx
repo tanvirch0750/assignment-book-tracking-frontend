@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { useEffect } from 'react';
 import { useGetTracklistQuery } from '../../redux/features/track/trackApi';
+import {
+  calcFinished,
+  calcReading,
+} from '../../redux/features/track/trackSlice';
+import { useAppDispatch } from '../../redux/hooks';
 import { ITrackItem } from '../../types/trackType';
 import Error from '../ui/Error';
 import Loader from '../ui/Loader';
@@ -12,6 +18,21 @@ function TrackBookList() {
     isLoading,
     isError,
   } = useGetTracklistQuery(undefined);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (trackList) {
+      const readingData = (trackList?.data as ITrackItem[]).filter(
+        (item) => item.status === 'reading'
+      ).length;
+      const finishedData = (trackList?.data as ITrackItem[]).filter(
+        (item) => item.status === 'finished'
+      ).length;
+
+      dispatch(calcReading(readingData));
+      dispatch(calcFinished(finishedData));
+    }
+  }, [trackList, dispatch]);
 
   let content = null;
 

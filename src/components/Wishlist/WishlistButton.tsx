@@ -40,9 +40,7 @@ function WishlistButton({ id }: { id: string }) {
           onClick={handleSubmit}
           className="text-md text-blue-500 hover:text-blue-600 hover:underline"
         >
-          {isLoading || getWishLoading
-            ? 'Adding to the wishlist...'
-            : 'Add to wishlist'}
+          {isLoading || getWishLoading ? 'wait a moment...' : 'Add to wishlist'}
         </button>
       )}
     </>

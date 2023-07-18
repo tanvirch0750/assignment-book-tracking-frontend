@@ -17,7 +17,13 @@ function AllBooks() {
     data: books,
     isLoading,
     isError,
-  } = useGetBooksQuery({ genre, publicationYear, searchTerm });
+  } = useGetBooksQuery({
+    page: 1,
+    limit: 100,
+    genre,
+    publicationYear,
+    searchTerm,
+  });
 
   let content = null;
 

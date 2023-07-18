@@ -41,7 +41,7 @@ function AddTrackButton({ id }: { id: string }) {
           className="text-md text-blue-500 hover:text-blue-600 hover:underline"
         >
           {isLoading || getTrackLoading
-            ? 'Adding to the tracking list...'
+            ? 'Wait a moment...'
             : 'Add to track list'}
         </button>
       )}

@@ -89,13 +89,9 @@ function Book() {
             <Error message="There was an error deleting the book" />
           )}
 
-          <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
-            <img
-              src={book?.data?.image}
-              alt="book"
-              className="h-36 object-cover"
-            />
-            <div className="flex h-36 flex-col gap-0.5">
+          <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-4">
+            <img src={book?.data?.image} alt="book" className="h-40" />
+            <div className="flex h-40 flex-col gap-0.5">
               <p className="text-lg font-medium">{book?.data?.title}</p>
               <p className="text-sm capitalize italic text-stone-500">
                 Author: {book?.data?.author}
@@ -110,6 +106,13 @@ function Book() {
                 Publication Year:{' '}
                 <span className="rounded-full bg-orange-200 px-2 text-sm tracking-wide">
                   {formattedDate}
+                </span>
+              </p>
+
+              <p>
+                Added by:{' '}
+                <span className="rounded-full bg-green-200 px-2 text-sm tracking-wide">
+                  {book?.data?.addedBy?.userName}
                 </span>
               </p>
               <span className="mt-auto space-x-3">
