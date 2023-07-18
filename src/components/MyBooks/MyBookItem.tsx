@@ -22,7 +22,7 @@ function MyBookItem({ book }: { book: IBook }) {
 
         <span className="mt-auto flex items-center justify-between space-x-2">
           <LinkButton to={`/book/${id!}`}>Details</LinkButton>
-          <LinkButton to={`/book/edit/${id!}`}>Edit</LinkButton>
+          <LinkButton to={`/edit-book/${id!}`}>Edit</LinkButton>
         </span>
       </div>
     </li>
