@@ -21,6 +21,8 @@ export const authApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const result = await queryFulfilled;

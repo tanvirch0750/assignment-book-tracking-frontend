@@ -47,6 +47,7 @@ function AllBooks() {
         <SearchBook />
         <Filter />
       </div>
+
       {content}
     </main>
   );

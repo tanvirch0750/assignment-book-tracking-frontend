@@ -7,7 +7,7 @@ import { IBook } from '../../types/bookType';
 
 function Filter() {
   const { genre, publicationYear } = useAppSelector((state) => state.book);
-  const { data: books, isLoading, isError } = useGetBooksQuery({});
+  const { data: books } = useGetBooksQuery({});
 
   const dispatch = useAppDispatch();
 

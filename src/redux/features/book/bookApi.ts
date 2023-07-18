@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -57,6 +58,7 @@ const bookApi = api.injectEndpoints({
     }),
     getBook: builder.query({
       query: (id: string) => `/book/${id}`,
+      // @ts-ignore
       providesTags: (result, error, arg) => [{ type: 'Book', id: arg }],
     }),
     addBook: builder.mutation({
@@ -73,6 +75,7 @@ const bookApi = api.injectEndpoints({
         method: 'PATCH',
         body: data,
       }),
+      // @ts-ignore
       invalidatesTags: (result, error, arg) => [
         'Books',
         { type: 'Book', id: arg.id },
