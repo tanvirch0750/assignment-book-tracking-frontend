@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import useAuth from '../../hooks/useAuth';
 import { useGetReviewsQuery } from '../../redux/features/comment/commentApi';
 import { IReview } from '../../types/reviewType';
 import Review from './Review';
 import ReviewAdd from './ReviewAdd';
 
 function ReviewList({ bookId }: { bookId: string }) {
+  const user = useAuth();
   const { data: reviews, isLoading, isError } = useGetReviewsQuery(bookId);
 
   let content = null;
@@ -36,7 +38,7 @@ function ReviewList({ bookId }: { bookId: string }) {
   return (
     <div className="">
       <h2 className="text-md font-medium text-stone-950">Books Reviews:</h2>
-      <ReviewAdd bookId={bookId} />
+      {user && <ReviewAdd bookId={bookId} />}
       <ul className="divide-y divide-stone-200 py-2">{content}</ul>
     </div>
   );

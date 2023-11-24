@@ -12,7 +12,7 @@ function Tracker() {
           self-discovery.
         </blockquote>
       </div>
-      <div className="my-8 flex items-center justify-between rounded-md bg-stone-100 p-8">
+      <div className="my-8 flex flex-col items-center justify-between gap-2 rounded-md bg-stone-100 p-8 md:flex-row">
         <p className="tex-lg font-bold text-stone-950">Status:</p>
         <p className="space-x-4">
           <span>Finished Books:</span>

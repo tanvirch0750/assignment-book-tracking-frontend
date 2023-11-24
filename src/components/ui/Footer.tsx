@@ -12,8 +12,8 @@ function Footer() {
   return (
     <>
       {user ? (
-        <div className="flex items-center justify-between bg-stone-800 px-4 py-3 text-sm uppercase text-stone-200 sm:px-6 md:text-base">
-          <p className="space-x-4 font-semibold text-stone-300 sm:space-x-6">
+        <div className="flex flex-col items-center justify-between gap-4 bg-stone-800 px-2 py-3 text-sm uppercase text-stone-200 sm:px-6 md:flex-row md:text-base">
+          <p className="space-x-4 text-xs font-semibold text-stone-300 sm:space-x-6 md:text-base">
             <span>
               Wish-listed books -{' '}
               {wishlist ? (
@@ -35,7 +35,7 @@ function Footer() {
               )}
             </span>
           </p>
-          <div className="space-x-4">
+          <div className="md:text-md space-x-4 text-xs">
             <Link className="hover:text-yellow-400" to="/wishlist">
               Your wishlist &rarr;
             </Link>

@@ -24,7 +24,7 @@ function Filter() {
   ];
 
   return (
-    <div className="flex items-center gap-3 text-stone-700">
+    <div className="flex w-full items-center gap-3 text-stone-700 sm:w-72">
       <div className="flex items-center gap-1">
         <label className="">Genre:</label>
         <select

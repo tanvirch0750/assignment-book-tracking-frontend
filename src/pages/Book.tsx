@@ -89,7 +89,7 @@ function Book() {
             <Error message="There was an error deleting the book" />
           )}
 
-          <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-4">
+          <div className="flex flex-col md:flex-row items-start gap-4 rounded-md bg-yellow-50 p-2 py-4">
             <img src={book?.data?.image} alt="book" className="h-40" />
             <div className="flex h-40 flex-col gap-0.5">
               <p className="text-lg font-medium">{book?.data?.title}</p>

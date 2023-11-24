@@ -25,7 +25,7 @@ function TrackBookItem({ item }: { item: ITrackItem }) {
     statusClass = 'rounded-full bg-blue-300 px-2 py-0.5 text-sm';
 
   return (
-    <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
+    <li className="flex flex-col items-start gap-4 rounded-md bg-yellow-50 p-2 py-2 md:flex-row">
       <img src={image} alt={title} className="h-36 w-[103px] object-cover" />
       <div className="flex h-36 grow flex-col gap-0.5">
         <p className="text-md flex items-center justify-between">

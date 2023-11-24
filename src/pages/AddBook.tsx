@@ -46,7 +46,7 @@ function AddBook() {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center px-4 py-6">
+    <div className="flex min-h-full w-full items-center justify-center px-4 py-6">
       <div className="w-full rounded-md bg-yellow-50 p-6">
         <h2 className="mb-8 text-2xl font-semibold">Want to add a new book?</h2>
 

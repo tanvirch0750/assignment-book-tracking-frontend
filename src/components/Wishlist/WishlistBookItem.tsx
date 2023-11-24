@@ -30,7 +30,7 @@ function WishlistBookItem({ item }: { item: IWishlistItem }) {
   });
 
   return (
-    <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
+    <li className="flex flex-col items-start gap-4 rounded-md bg-yellow-50 p-2 py-2 md:flex-row">
       <img src={image} alt={title} className="h-40 w-[103px]" />
       <div className="flex h-40 grow flex-col gap-0.5">
         <p className="text-lg font-medium">{title}</p>

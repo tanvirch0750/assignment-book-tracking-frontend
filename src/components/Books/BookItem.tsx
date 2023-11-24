@@ -18,9 +18,9 @@ function BookItem({ wishlist, book }: IBookIemProps) {
 
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
-      <img src={image} alt={title} className="h-40 w-[103px]" />
+      <img src={image} alt={title} className="h-50 md:48 w-[103px] sm:h-40" />
       <div className="flex h-40 grow flex-col gap-0.5">
-        <p className="text-lg font-medium">{title}</p>
+        <p className="text-md font-medium md:text-lg">{title}</p>
         <p className="text-sm capitalize italic text-stone-500">
           Author: {author}
         </p>
@@ -31,8 +31,15 @@ function BookItem({ wishlist, book }: IBookIemProps) {
           </span>
         </p>
 
-        <p>
+        <p className="hidden md:block">
           Publication date:{' '}
+          <span className="rounded-full bg-orange-100 px-2 text-xs tracking-wide">
+            {formattedDate}
+          </span>
+        </p>
+
+        <p className="block md:hidden">
+          PD:{' '}
           <span className="rounded-full bg-orange-100 px-2 text-xs tracking-wide">
             {formattedDate}
           </span>
